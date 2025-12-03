@@ -36,7 +36,6 @@ The T3 Stack main technologies used in this project include:
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://prisma.io/)
 - [Prisma](https://prisma.io/)
-- [Drizzle](https://orm.drizzle.team/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [tRPC](https://trpc.io/)
 
@@ -45,6 +44,7 @@ If you are not familiar with the different technologies used in this project, pl
 Other tools used in this project include:
 - [shadcn/ui](https://ui.shadcn.com/)
 - [tweakcn](https://tweakcn.com/)
+- [Next Js TopLoader](https://www.npmjs.com/package/nextjs-toploader)
 
 
 ### Learn More About T3 Stack
