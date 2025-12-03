@@ -36,6 +36,7 @@ export const Navbar = () => {
           size={"icon"}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
+          className="transition-all duration-300 ease-in-out"
         >
           <Sun className="hidden h-[1.2rem] w-[1.2rem] dark:block" />
           <Moon className="h-[1.2rem] w-[1.2rem] dark:hidden" />

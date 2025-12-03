@@ -8,6 +8,7 @@ import { Navbar } from "~/components/shared/Navbar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "~/components/ui/sonner";
 import { ThemeProvider } from "~/components/theme-provider";
+import { TopLoaderProvider } from "~/components/shared/TopLoaderProvider";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -36,6 +37,7 @@ export default function RootLayout({
             <TRPCReactProvider>
               <Navbar />
               <main className="container mx-auto max-w-4xl py-8">
+                <TopLoaderProvider />
                 {children}
               </main>
               <Toaster richColors position="top-center" />

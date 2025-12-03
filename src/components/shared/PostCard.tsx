@@ -60,9 +60,14 @@ export const PostCard = (props: PostCardProps) => {
 
       {/* Footer */}
       <div className="mt-4 flex justify-between border-t pt-3">
-        <div className="text-muted-foreground flex items-center gap-1 text-sm">
+        <Link
+          href={postDetailURL}
+          className="text-muted-foreground flex items-center gap-1 text-sm"
+        >
+          {" "}
           <MessageSquareMore className="size-4" /> {props.totalComments} answers
-        </div>
+        </Link>
+
         <Link href={postDetailURL} className="text-primary text-sm">
           View Post
         </Link>

@@ -2,6 +2,7 @@
 import { api } from "~/trpc/react";
 import { Button } from "../ui/button";
 import { PostCard } from "./PostCard";
+import { Spinner } from "../ui/spinner";
 
 export const HomePostList = () => {
   const postQuery = api.post.getAllPosts.useQuery();
@@ -50,7 +51,7 @@ export const HomePostList = () => {
             className="self-center"
             onClick={handleFetchNextPage}
           >
-            {paginatedPostQuery.isFetching ? "Loading..." : "See More"}
+            {paginatedPostQuery.isFetching ? <><Spinner />Loading...</> : "See More"}
           </Button>
         )}
 
