@@ -36,9 +36,18 @@ export default async function ProfilePage({
         </Card>
       </main>
     );
-  } catch (err: any) {
-    err.code === "NOT_FOUND" && notFound();
-    // throw new Error(err.message || "Something went wrong");
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error(err.message);
+    }
+
+    if (typeof err === "object" && err !== null && "code" in err) {
+      const e = err as { code?: string };
+      if (e.code === "NOT_FOUND") {
+        notFound();
+      }
+    }
+
     throw err;
   }
 }

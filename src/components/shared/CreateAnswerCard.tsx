@@ -83,7 +83,7 @@ export const CreateAnswerCard = (props: CreateAnswerCardProps) => {
     <div className="space-y-3">
       <h3 className="flex items-center text-2xl font-bold">
         {getAnswersQuery.isLoading ? (
-          <Skeleton className="h-5 w-5 items-center mr-2" />
+          <Skeleton className="mr-2 h-5 w-5 items-center" />
         ) : (
           getAnswersQuery.data?.length
         )}{" "}
@@ -102,8 +102,8 @@ export const CreateAnswerCard = (props: CreateAnswerCardProps) => {
             <CardContent>
               <div className="flex gap-4">
                 <AvatarComponent
-                  name={session?.user.name!}
-                  image={session?.user.image!}
+                  name={session?.user.name ?? "Guest"}
+                  image={session?.user.image ?? ""}
                 />
                 <div className="w-full space-y-1.5">
                   <FormField

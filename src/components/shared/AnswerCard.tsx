@@ -1,4 +1,8 @@
 import { EllipsisVerticalIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { api } from "~/trpc/react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,10 +22,6 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { AvatarComponent } from "./AvatarComponent";
-import { api } from "~/trpc/react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { useSession } from "next-auth/react";
 
 type AnswerCardProps = {
   id: string;
@@ -46,8 +46,8 @@ export const AnswerCard = (props: AnswerCardProps) => {
       deleteAnswerMutation.mutateAsync(
         { answerId: props.id },
         {
-          onSuccess: async () => {
-            await apiUtils.answer.getAnswerPaginated.invalidate();
+          onSuccess: () => {
+            void apiUtils.answer.getAnswerPaginated.invalidate();
             // router.push("/");
           },
         },

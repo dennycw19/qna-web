@@ -53,10 +53,10 @@ export const PostDetailCard = (props: PostDetailCardProps) => {
 
   const markAsAnsweredMutation = api.post.markAsAnswered.useMutation({
     onSuccess: async () => {
-      {
-        !props.isAnswered
-          ? toast.success("Mark as Answered!")
-          : toast.success("Mark as Unanswered!");
+      if (!props.isAnswered) {
+        toast.success("Mark as Answered!");
+      } else {
+        toast.success("Mark as Unanswered!");
       }
       await apiUtils.post.getPostById.invalidate({ postId: props.postId });
       await apiUtils.post.getPostPaginated.invalidate({});
@@ -88,8 +88,8 @@ export const PostDetailCard = (props: PostDetailCardProps) => {
       deletePostMutation.mutateAsync(
         { postId: props.postId },
         {
-          onSuccess: async () => {
-            await apiUtils.post.getPostPaginated.invalidate();
+          onSuccess: () => {
+            void apiUtils.post.getPostPaginated.invalidate();
             router.push("/"); // balik ke home
           },
         },
@@ -135,7 +135,7 @@ export const PostDetailCard = (props: PostDetailCardProps) => {
               Unanswered
             </Badge>
           )}
-          
+
           {getPostByIdQuery.data?.author.email == session?.user.email && (
             <AlertDialog>
               <DropdownMenu>

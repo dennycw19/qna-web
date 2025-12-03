@@ -1,9 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { api } from "~/trpc/react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -21,13 +22,9 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { api } from "~/trpc/react";
-import { signIn, useSession } from "next-auth/react";
 import { AvatarComponent } from "./AvatarComponent";
 
-import { Label } from "@radix-ui/react-label";
-import { Loader2Icon, X } from "lucide-react";
-import { Toaster } from "../ui/sonner";
+import { Loader2Icon } from "lucide-react";
 import { toast } from "sonner";
 import { Skeleton } from "../ui/skeleton";
 

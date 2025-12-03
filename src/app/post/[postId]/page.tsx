@@ -42,10 +42,20 @@ export default async function PostDetail({
         <AnswerList postId={postId} />
       </div>
     );
-  } catch (err: any) {
-    console.log(err.code);
-    err.code === "NOT_FOUND" && notFound();
-    // throw new Error(err.message || "Something went wrong");
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      // err.message aman
+      console.error(err.message);
+    }
+
+    // akses custom property 'code'
+    if (typeof err === "object" && err !== null && "code" in err) {
+      const e = err as { code?: string }; // type guard
+      if (e.code === "NOT_FOUND") {
+        notFound();
+      }
+    }
+
     throw err;
   }
 }

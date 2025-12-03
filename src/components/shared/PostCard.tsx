@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Badge } from "../ui/badge";
 import { MessageSquareMore } from "lucide-react";
+import Link from "next/link";
+import { Badge } from "../ui/badge";
 import { AvatarComponent } from "./AvatarComponent";
 
 type PostCardProps = {
